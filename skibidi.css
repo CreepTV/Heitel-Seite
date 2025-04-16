@@ -1,0 +1,195 @@
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Bangers', cursive; /* Bold, energetic font */
+	background: linear-gradient(135deg, #ff0000, #ff9900, #ffff00); /* Flashy gradient */
+	color: #ffffff; /* White text for contrast */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	line-height: 1.6;
+	overflow-x: hidden;
+	animation: skibidi-bg 5s infinite alternate; /* Background animation */
+}
+
+@keyframes skibidi-bg {
+	0% { background: linear-gradient(135deg, #ff0000, #ff9900, #ffff00); }
+	50% { background: linear-gradient(135deg, #00ff00, #00ffff, #0000ff); }
+	100% { background: linear-gradient(135deg, #ff00ff, #ff0000, #ffff00); }
+}
+
+/* Header styles */
+header {
+	text-align: center;
+	padding: 50px 20px;
+	background: #000000; /* Black for contrast */
+	color: #ffcc00; /* Bright yellow text */
+	border-bottom: 5px solid #ff0000; /* Red border */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+	animation: skibidi-header 2s infinite alternate; /* Header animation */
+}
+header h1 {
+	font-size: 4rem;
+	font-family: 'Bangers', cursive;
+	text-shadow: 2px 2px #ff0000, 4px 4px #ffcc00; /* Bold shadow */
+}
+
+@keyframes skibidi-header {
+	0% { transform: rotate(0deg); }
+	50% { transform: rotate(5deg); }
+	100% { transform: rotate(-5deg); }
+}
+
+/* Navigation styles */
+.nav {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin: 20px 0;
+	background: #ffcc00; /* Bright yellow */
+	padding: 10px 20px;
+	border-radius: 20px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.nav a {
+	color: #000000; /* Black text */
+	font-size: 1.2rem;
+	text-decoration: none;
+	font-family: 'Bangers', cursive;
+	padding: 10px 15px;
+	background: #ff0000; /* Red */
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+.nav a:hover {
+	background: #00ff00; /* Green on hover */
+	color: #ffffff; /* White text */
+	transform: scale(1.2);
+}
+
+/* Profile image */
+.profile-img {
+	text-align: center;
+	margin: 20px 0;
+}
+.profile-img img {
+	width: 400px;
+	height: 200px;
+	border-radius: 50%;
+	border: 5px solid #ffcc00;
+	box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+	transition: transform 0.3s, box-shadow 0.3s;
+	animation: skibidi-img 3s infinite alternate; /* Image animation */
+}
+.profile-img img:hover {
+	transform: rotate(360deg) scale(1.1); /* Full rotation on hover */
+	box-shadow: 0 0 30px rgba(255, 204, 0, 0.8);
+}
+
+@keyframes skibidi-img {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
+
+/* Section styles */
+.info {
+	background: #000000; /* Black background */
+	border: 3px solid #ffcc00; /* Yellow border */
+	border-radius: 25px;
+	padding: 20px;
+	margin: 20px 0;
+	width: 90%;
+	max-width: 800px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	transition: transform 0.3s, box-shadow 0.3s;
+	animation: skibidi-info 2s infinite alternate; /* Section animation */
+}
+.info:hover {
+	transform: translateY(-10px) rotate(-2deg); /* Slight tilt on hover */
+	box-shadow: 0 8px 30px rgba(255, 204, 0, 0.5);
+}
+.info h3 {
+	color: #ffcc00;
+	margin-bottom: 10px;
+	font-size: 1.8rem;
+	font-family: 'Bangers', cursive;
+}
+
+@keyframes skibidi-info {
+	0% { transform: rotate(0deg); }
+	50% { transform: rotate(2deg); }
+	100% { transform: rotate(-2deg); }
+}
+
+/* List styles */
+ul {
+	list-style: none;
+	padding: 0;
+}
+ul li {
+	margin: 10px 0;
+	position: relative;
+	padding-left: 25px;
+	font-family: 'Bangers', cursive;
+	color: #ffcc00;
+}
+ul li::before {
+	content: '🎵'; /* Music note bullet */
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.2rem;
+}
+
+/* Footer styles */
+footer {
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
+	background: #000000; /* Black footer */
+	color: #ffcc00; /* Yellow text */
+	width: 100%;
+	box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+	font-family: 'Bangers', cursive;
+	animation: skibidi-footer 2s infinite alternate; /* Footer animation */
+}
+footer p {
+	margin: 5px 0;
+	font-size: 0.9rem;
+}
+
+@keyframes skibidi-footer {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+	100% { transform: translateY(0); }
+}
+
+/* Theme switcher button */
+.theme-switcher {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: #ff0000; /* Red */
+	color: #ffffff; /* White text */
+	border: 2px solid #ffcc00; /* Yellow border */
+	border-radius: 20px;
+	padding: 10px 15px;
+	font-family: 'Bangers', cursive;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s;
+}
+.theme-switcher:hover {
+	background: #00ff00; /* Green on hover */
+	color: #000000; /* Black text */
+	transform: scale(1.2);
+}

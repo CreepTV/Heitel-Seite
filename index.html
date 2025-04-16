@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joachim Heitel - Wild West Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link id="theme-stylesheet" rel="stylesheet" href="wildwest.css">
+</head>
+<body>
+    <header>
+        <h1>Joachim Heitel</h1>
+        <button id="theme-switcher" class="theme-switcher">Style wechseln</button>
+    </header>
+    <nav class="nav">
+        <a href="#info">Info</a>
+        <a href="#contact">Kontakt</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#favorites">Favoriten</a>
+    </nav>
+    <div class="profile-img">
+        <img src="img/heitel.jpg" alt="Joachim Heitel">
+    </div>
+    <div id="info" class="info">
+        <h3>Info</h3>
+        <p>Geburtstag: 23.03.1965</p>
+    </div>
+    <div id="contact" class="info">
+        <h3>Kontakt</h3>
+        <p>Joachim Heitel<br>Scheffelstr. 13<br>74889 Sinsheim</p>
+        <p>Telefon: 07261 / 6631512, 0172 / 6283422</p>
+        <p>Email: <img src="img/mail.png" alt="mail"></p>
+    </div>
+    <div id="hobbies" class="info">
+        <h3>Hobbies</h3>
+        <ul>
+            <li>Fahrrad fahren <a href="http://www.rad-sinsheim.de">Team Sinsheim</a></li>
+            <li>GPS Navigation -> <a href="http://www.heitel.name/maps/php/index.php">Touren DB</a></li>
+            <li>
+                <a href="https://www.instagram.com/joachimheitel/">
+                    <img src="img/instagram.svg" width="32" height="32" alt="Instagram">
+                </a>
+                und
+                <a href="https://www.flickr.com/photos/heitel/">
+                    <img src="img/flickr.png" height="32" alt="Flickr">
+                </a>
+            </li>
+            <li><a href="https://www.vokalensemble-sinsheim.de">Vokalensemble Sinsheim</a></li>
+        </ul>
+    </div>
+    <div id="favorites" class="info">
+        <h3>Lieblingsessen</h3>
+        <p>Ofengemüse, Lachs, Kartoffeln, Bienenstich</p>
+    </div>
+    <div id="skills" class="info">
+        <h3>Fähigkeiten</h3>
+        <ul>
+            <li>Programmierung: Python, JavaScript, C++</li>
+            <li>Hardware-Entwicklung</li>
+            <li>Sprachen: Deutsch, Englisch</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2025 Joachim Heitel</p>
+        <p>Moinsen was geht?</p>
+    </footer>
+    <script>
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const themeStylesheet = document.getElementById('theme-stylesheet');
+        const themes = ['verspielt.css', 'startrek.css', 'skibidi.css', 'starwars.css',  'uwu.css', 'wildwest.css']; // Add more stylesheets here
+        let currentThemeIndex = 0;
+
+        themeSwitcher.addEventListener('click', () => {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            themeStylesheet.href = themes[currentThemeIndex];
+        });
+    </script>
+</body>
+</html>

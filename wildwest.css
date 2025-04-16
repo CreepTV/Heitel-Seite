@@ -1,0 +1,157 @@
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Playfair Display', serif; /* Vintage-style font */
+	background: linear-gradient(135deg, #f4e4c1, #d2b48c); /* Rustic parchment colors */
+	color: #4b2e1e; /* Dark brown for text */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+/* Header styles */
+header {
+	text-align: center;
+	padding: 50px 20px;
+	background: #8b4513; /* Saddle brown */
+	color: #fff8dc; /* Cornsilk */
+	border-bottom: 5px solid #4b2e1e; /* Dark brown border */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+header h1 {
+	font-size: 4rem;
+	font-family: 'Cinzel Decorative', cursive; /* Western-style font */
+	text-shadow: 2px 2px #4b2e1e; /* Shadow for depth */
+}
+
+/* Navigation styles */
+.nav {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin: 20px 0;
+	background: #deb887; /* Burlywood */
+	padding: 10px 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.nav a {
+	color: #4b2e1e;
+	font-size: 1.2rem;
+	text-decoration: none;
+	font-family: 'Cinzel', serif; /* Western serif font */
+	padding: 5px 10px;
+	transition: all 0.3s;
+}
+.nav a:hover {
+	color: #fff8dc;
+	background: #4b2e1e;
+	border-radius: 5px;
+}
+
+/* Profile image */
+.profile-img {
+	text-align: center;
+	margin: 20px 0;
+}
+.profile-img img {
+	width: 400px;
+	height: 200px;
+	border-radius: 20%;
+	border: 5px solid #4b2e1e;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+.profile-img img:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Section styles */
+.info {
+	background: #fff8dc; /* Cornsilk */
+	border: 2px solid #4b2e1e;
+	border-radius: 15px;
+	padding: 20px;
+	margin: 20px 0;
+	width: 90%;
+	max-width: 800px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+.info:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+.info h3 {
+	color: #8b4513;
+	margin-bottom: 10px;
+	font-size: 1.8rem;
+	font-family: 'Cinzel Decorative', cursive;
+}
+
+/* List styles */
+ul {
+	list-style: none;
+	padding: 0;
+}
+ul li {
+	margin: 10px 0;
+	position: relative;
+	padding-left: 25px;
+	font-family: 'Cinzel', serif;
+}
+ul li::before {
+	content: '★'; /* Star bullet */
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #8b4513;
+	font-size: 1.2rem;
+}
+
+/* Footer styles */
+footer {
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
+	background: #8b4513;
+	color: #fff8dc;
+	width: 100%;
+	box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+	font-family: 'Cinzel', serif;
+}
+footer p {
+	margin: 5px 0;
+	font-size: 0.9rem;
+}
+
+/* Theme switcher button */
+.theme-switcher {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: #8b4513; /* Saddle brown */
+	color: #fff8dc; /* Cornsilk */
+	border: 2px solid #4b2e1e; /* Dark brown */
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-family: 'Cinzel', serif;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s;
+}
+.theme-switcher:hover {
+	background: #4b2e1e;
+	transform: scale(1.1);
+}

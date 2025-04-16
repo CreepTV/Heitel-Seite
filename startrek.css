@@ -1,0 +1,155 @@
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Orbitron', sans-serif; /* Futuristic font */
+	background: radial-gradient(circle, #000000, #1a1a1a); /* Space-like dark background */
+	color: #00d4ff; /* Sci-fi blue for text */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+/* Header styles */
+header {
+	text-align: center;
+	padding: 50px 20px;
+	background: linear-gradient(90deg, #001f3f, #002b5c); /* Starfleet blue gradient */
+	color: #ffffff; /* White text */
+	border-bottom: 5px solid #00d4ff; /* Sci-fi blue border */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+header h1 {
+	font-size: 4rem;
+	font-family: 'Star Jedi', sans-serif; /* Star Trek-inspired font */
+	text-shadow: 0 0 15px #00d4ff, 0 0 30px #00ffcc; /* Glowing effect */
+}
+
+/* Navigation styles */
+.nav {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin: 20px 0;
+	background: #002b5c; /* Starfleet blue */
+	padding: 10px 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.nav a {
+	color: #00d4ff;
+	font-size: 1.2rem;
+	text-decoration: none;
+	padding: 5px 10px;
+	border: 2px solid transparent;
+	transition: all 0.3s;
+}
+.nav a:hover {
+	color: #ffffff;
+	border-color: #00d4ff;
+	background: #001f3f;
+	border-radius: 5px;
+}
+
+/* Profile image */
+.profile-img {
+	text-align: center;
+	margin: 20px 0;
+}
+.profile-img img {
+	width: 400px;
+	height: 200px;
+	border-radius: 20%;
+	border: 5px solid #00d4ff;
+	box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+.profile-img img:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+}
+
+/* Section styles */
+.info {
+	background: rgba(0, 0, 0, 0.8); /* Transparent black */
+	border: 2px solid #00d4ff;
+	border-radius: 15px;
+	padding: 20px;
+	margin: 20px 0;
+	width: 90%;
+	max-width: 800px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+.info:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+}
+.info h3 {
+	color: #00ffcc;
+	margin-bottom: 10px;
+	font-size: 1.8rem;
+}
+
+/* List styles */
+ul {
+	list-style: none;
+	padding: 0;
+}
+ul li {
+	margin: 10px 0;
+	position: relative;
+	padding-left: 25px;
+}
+ul li::before {
+	content: '⦿'; /* Sci-fi bullet */
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #00d4ff;
+	font-size: 1.2rem;
+}
+
+/* Footer styles */
+footer {
+	text-align: center;
+	padding: 20px;
+	margin-top: 20px;
+	background: #001f3f;
+	color: #00d4ff;
+	width: 100%;
+	box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+}
+footer p {
+	margin: 5px 0;
+	font-size: 0.9rem;
+}
+
+/* Theme switcher button */
+.theme-switcher {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: #002b5c; /* Starfleet blue */
+	color: #00d4ff;
+	border: 2px solid #00d4ff;
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-family: 'Orbitron', sans-serif;
+	cursor: pointer;
+	transition: background 0.3s, transform 0.2s;
+}
+.theme-switcher:hover {
+	background: #001f3f;
+	transform: scale(1.1);
+}
