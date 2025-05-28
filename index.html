@@ -7,6 +7,7 @@
     <title>HeitelTube</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="img/HeitelKopf_trans.ico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <header>
@@ -23,6 +24,63 @@
     </header>
     <main id="video-grid">
         <!-- Videos werden hier per JS geladen -->
+    </main>
+    <main id="video-player-page" style="display: none;">
+        <div id="video-player">
+            <div class="custom-video-player">
+                <video></video>
+                <div class="video-progress-container">
+                    <div class="video-progress-bar"></div>
+                    <div class="video-progress-thumb"></div>
+                </div>
+                <div class="video-controls">
+                    <div class="left-controls">
+                        <button id="play-pause-btn" class="play">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </button>
+                        <button id="prev-btn">
+                            <span class="material-symbols-rounded">replay_10</span>
+                        </button>
+                        <button id="next-btn">
+                            <span class="material-symbols-rounded">forward_10</span>
+                        </button>
+                        <div class="time-display">
+                            <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                        </div>
+                    </div>
+                    <div class="right-controls">
+                        <div class="volume-slider-container">
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.01">
+                        </div>
+                        <button id="volume-btn">
+                            <span class="material-symbols-rounded">volume_up</span>
+                        </button>
+                        <button id="settings-btn">
+                            <span class="material-symbols-rounded">settings</span>
+                        </button>
+                        <div id="settings-menu" style="display: none;">
+    <ul>
+        <li data-quality="1080p">1080p</li>
+        <li data-quality="720p">720p</li>
+        <li data-quality="480p">480p</li>
+        <li data-quality="360p">360p</li>
+    </ul>
+</div>
+                        <button id="fullscreen-btn">
+                            <span class="material-symbols-rounded">fullscreen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="video-details">
+                <h1></h1>
+                <div class="meta"></div>
+                <p class="description"></p>
+            </div>
+        </div>
+        <aside id="recommended-videos">
+            <!-- Empfohlene Videos werden hier per JS geladen -->
+        </aside>
     </main>
     <footer>
         <span>&copy; 2025 HeitelTube</span>
