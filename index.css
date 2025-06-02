@@ -96,6 +96,95 @@ footer {
     margin-top: 48px;
     border-top: 1px solid #333;
 }
+/* Custom Video Controls Overlay */
+.video-player-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+.video-controls-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px 16px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    
+    border-radius: 0 0 12px 12px;
+    opacity: 1;
+    transition: opacity 0.4s;
+    pointer-events: auto;
+    z-index: 2;
+}
+.video-player-container video {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    background: #000;
+}
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.2s;
+}
+.control-btn:hover {
+    color: #1db954;
+}
+.seekbar-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 6px;
+    z-index: 2;
+}
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+#seekBar {
+    accent-color: #1db954;
+    height: 6px;
+    background: #444;
+    border-radius: 2px;
+    width: 100%;
+    margin: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+#volumeBar {
+    accent-color: #1db954;
+}
+#settingsMenu {
+    display: none;
+    position: absolute;
+    right: 24px;
+    bottom: 60px;
+    background: #232323;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    padding: 18px 24px;
+    z-index: 10;
+    color: #fff;
+    min-width: 180px;
+    font-size: 1rem;
+}
+#settingsMenu select {
+    background: #181818;
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px;
+    border: none;
+    margin-top: 4px;
+}
 @media (max-width: 700px) {
     header {
         flex-direction: column;
@@ -109,5 +198,29 @@ footer {
     #video-grid {
         padding: 12px;
         gap: 16px;
+    }
+    .video-controls-overlay {
+        padding: 8px 2px 4px 2px;
+        gap: 4px;
+    }
+    .seekbar-row {
+        margin-bottom: 2px;
+    }
+    .controls-row {
+        gap: 8px;
+    }
+    .control-btn {
+        font-size: 1.3rem;
+    }
+    #seekBar {
+        min-width: 60px;
+        height: 4px;
+    }
+    #settingsMenu {
+        right: 4px;
+        bottom: 44px;
+        min-width: 120px;
+        padding: 10px 8px;
+        font-size: 0.95rem;
     }
 }
