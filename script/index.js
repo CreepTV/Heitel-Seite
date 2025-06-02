@@ -5,6 +5,7 @@ const videos = [
         thumb: "img/heitel.jpg",
         src: "https://www.w3schools.com/html/mov_bbb.mp4",
         author: "Heitel",
+        authorImg: "img/HeitelKopf_trans.ico", // Updated author profile image
         views: "1.234 Aufrufe",
         date: "vor 1 Tag"
     },
@@ -12,9 +13,46 @@ const videos = [
         title: "Heitel erklärt JavaScript",
         thumb: "img/heitel.jpg",
         src: "https://www.w3schools.com/html/movie.mp4",
-        author: "Heitel",
+        author: "Marco",
+        authorImg: "img/HeitelKopf_trans.ico", // Updated author profile image
         views: "987 Aufrufe",
         date: "vor 2 Tagen"
+    },
+    {
+        title: "CSS für Anfänger",
+        thumb: "img/css.jpg",
+        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        author: "Sigma",
+        authorImg: "img/HeitelKopf_trans.ico",
+        views: "2.345 Aufrufe",
+        date: "vor 3 Tagen"
+    },
+    {
+        title: "HTML Basics",
+        thumb: "img/html.jpg",
+        src: "https://www.w3schools.com/html/movie.mp4",
+        author: "Heitel",
+        authorImg: "img/HeitelKopf_trans.ico",
+        views: "1.678 Aufrufe",
+        date: "vor 4 Tagen"
+    },
+    {
+        title: "React Einführung",
+        thumb: "img/react.jpg",
+        src: "https://www.w3schools.com/html/mov_bbb.mp4",
+        author: "Heitel",
+        authorImg: "img/HeitelKopf_trans.ico",
+        views: "3.456 Aufrufe",
+        date: "vor 5 Tagen"
+    },
+    {
+        title: "Node.js Grundlagen",
+        thumb: "img/node.jpg",
+        src: "https://www.w3schools.com/html/movie.mp4",
+        author: "Heitel",
+        authorImg: "img/HeitelKopf_trans.ico",
+        views: "2.789 Aufrufe",
+        date: "vor 6 Tagen"
     }
     // Weitere Videos können hier ergänzt werden
 ];
@@ -29,7 +67,9 @@ function renderVideos(list) {
             <img class="video-thumb" src="${video.thumb}" alt="Thumbnail">
             <div class="video-info">
                 <div class="video-title">${video.title}</div>
-                <div class="video-meta">${video.author} • ${video.views} • ${video.date}</div>
+                <div class="video-meta">
+                    <img src="${video.authorImg}" alt="Author" class="author-img"> ${video.author} • ${video.views} • ${video.date}
+                </div>
             </div>
         `;
         card.onclick = () => {
@@ -45,48 +85,74 @@ function showVideoByIndex(idx) {
     if (!video) return renderVideos(videos);
     const grid = document.getElementById('video-grid');
     grid.innerHTML = `
-        <div style="max-width:900px;margin:32px auto;width:100%;background:#222;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.3);padding:24px;">
-            <div class="video-player-container" style="position:relative;width:100%;max-width:100%;">
-                <video id="customVideo" src="${video.src}" style="width:100%;border-radius:12px;background:#000;display:block;" preload="metadata"></video>
-                <div id="customControls" class="video-controls-overlay">
-                    <div class="seekbar-row">
-                        <input id="seekBar" type="range" min="0" max="100" value="0" step="0.01">
-                    </div>
-                    <div class="controls-row">
-                        <div style="display:flex;align-items:center;gap:10px;flex:1 1 0;">
-                            <button id="playPauseBtn" class="control-btn" title="Play/Pause">▶️</button>
-                            <button id="nextVideoBtn" class="control-btn" title="Nächstes Video">⏭️</button>
-                            <span id="currentTime" style="min-width:48px;font-variant-numeric:tabular-nums;">0:00</span>
-                            <span style="color:#ffff;font-size:1.2em;padding:0 0;">/</span>
-                            <span id="duration" style="min-width:48px;font-variant-numeric:tabular-nums;">0:00</span>
-                            <button id="muteBtn" class="control-btn" title="Mute/Unmute">🔊</button>
-                            <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="width:80px;">
+        <div class="video-page">
+            <div class="video-player-section">
+                <div class="video-player-container">
+                    <video id="customVideo" src="${video.src}" class="video-element" preload="metadata"></video>
+                    <div id="customControls" class="video-controls-overlay">
+                        <div class="seekbar-row">
+                            <input id="seekBar" type="range" min="0" max="100" value="0" step="0.01">
                         </div>
-                        <div style="display:flex;align-items:center;gap:0;margin-left:auto;">
-                            <button id="settingsBtn" class="control-btn" title="Einstellungen">⚙️</button>
-                            <button id="fullscreenBtn" class="control-btn" title="Vollbild">⛶</button>
+                        <div class="controls-row">
+                            <div class="controls-left">
+                                <button id="playPauseBtn" class="control-btn" title="Play/Pause">▶️</button>
+                                <button id="nextVideoBtn" class="control-btn" title="Nächstes Video">⏭️</button>
+                                <span id="currentTime" class="time-display">0:00</span>
+                                <span class="time-separator">/</span>
+                                <span id="duration" class="time-display">0:00</span>
+                                <button id="muteBtn" class="control-btn" title="Mute/Unmute">🔊</button>
+                                <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" class="volume-bar">
+                                </div>
+                                <div class="controls-right">
+                                    <button id="settingsBtn" class="control-btn" title="Einstellungen">⚙️</button>
+                                    <button id="fullscreenBtn" class="control-btn" title="Vollbild">⛶</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div id="settingsMenu" class="settings-menu">
+                        <div class="settings-title">Einstellungen</div>
+                        <div class="settings-item">
+                            <label>Wiedergabegeschwindigkeit:</label>
+                            <select id="playbackRateSelect" class="playback-rate-select">
+                                <option value="0.5">0.5x</option>
+                                <option value="0.75">0.75x</option>
+                                <option value="1" selected>1x (Normal)</option>
+                                <option value="1.25">1.25x</option>
+                                <option value="1.5">1.5x</option>
+                                <option value="2">2x</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div id="settingsMenu" style="display:none;position:absolute;right:24px;bottom:60px;background:#232323;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,0.3);padding:18px 24px;z-index:10;color:#fff;min-width:180px;">
-                    <div style='font-weight:bold;margin-bottom:10px;'>Einstellungen</div>
-                    <div style='margin-bottom:8px;'>
-                        <label style='font-size:1rem;'>Wiedergabegeschwindigkeit:</label><br>
-                        <select id="playbackRateSelect" style='margin-top:4px;width:100%;background:#181818;color:#fff;border-radius:6px;padding:4px;'>
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1x (Normal)</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2x</option>
-                        </select>
-                    </div>
+                <h2 class="video-title">${video.title}</h2>
+                <div class="video-meta">
+                    <img src="${video.authorImg}" alt="Author" class="author-img"> ${video.author} • ${video.views} • ${video.date}
                 </div>
+                <p class="video-description">Beschreibung des Videos...</p>
+                <button id="backBtn" class="back-btn">Zurück zur Übersicht</button>
             </div>
-            <h2 style="margin:18px 0 8px 0;">${video.title}</h2>
-            <div style="color:#aaa;">${video.author} • ${video.views} • ${video.date}</div>
-            <p style="margin-top:18px;">Beschreibung des Videos...</p>
-            <button id="backBtn" style="margin-top:24px;padding:10px 24px;border-radius:24px;background:#1db954;color:#fff;border:none;font-size:1rem;cursor:pointer;">Zurück zur Übersicht</button>
+            <div class="recommended-section">
+                <h3 class="recommended-title">Empfohlene Videos</h3>
+                <ul class="recommended-list">
+                    ${videos.map((v, i) => {
+                        if (i !== idx) {
+                            return `
+                                <li class="recommended-video" onclick="showVideoByIndex(${i})">
+                                    <img src="${v.thumb}" alt="Thumbnail" class="recommended-thumb">
+                                    <div class="recommended-info">
+                                        <div class="recommended-title">${v.title}</div>
+                                        <div class="recommended-meta">
+                                            <img src="${v.authorImg}" alt="Author" class="author-img"> ${v.author}
+                                        </div>
+                                        <div class="recommended-extra">${v.views} • ${v.date}</div>
+                                    </div>
+                                </li>
+                            `;
+                        }
+                        return '';
+                    }).join('')}
+                </ul>
+            </div>
         </div>
     `;
     // Custom Controls Logic
@@ -162,23 +228,18 @@ function showVideoByIndex(idx) {
         }
     };
     vid.addEventListener('play', () => {
-        playPauseBtn.textContent = '⏸️';
+        playPauseBtn.innerHTML = '<span class="material-icons-round">pause</span>';
         showControls();
     });
     vid.addEventListener('pause', () => {
-        playPauseBtn.textContent = '▶️';
+        playPauseBtn.innerHTML = '<span class="material-icons-round">play_arrow</span>';
         showControls();
     });
     // Volume/Mute
+    muteBtn.innerHTML = vid.volume === 0 ? '<span class="material-icons-round">volume_off</span>' : (vid.volume < 0.5 ? '<span class="material-icons-round">volume_down</span>' : '<span class="material-icons-round">volume_up</span>');
     volumeBar.addEventListener('input', () => {
         vid.volume = volumeBar.value;
-        if (vid.volume === 0) {
-            muteBtn.textContent = '🔇';
-        } else if (vid.volume < 0.5) {
-            muteBtn.textContent = '🔉';
-        } else {
-            muteBtn.textContent = '🔊';
-        }
+        muteBtn.innerHTML = vid.volume === 0 ? '<span class="material-icons-round">volume_off</span>' : (vid.volume < 0.5 ? '<span class="material-icons-round">volume_down</span>' : '<span class="material-icons-round">volume_up</span>');
         if (vid.volume > 0) lastVolume = vid.volume;
     });
     muteBtn.onclick = () => {
@@ -186,20 +247,22 @@ function showVideoByIndex(idx) {
             lastVolume = vid.volume;
             vid.volume = 0;
             volumeBar.value = 0;
-            muteBtn.textContent = '🔇';
+            muteBtn.innerHTML = '<span class="material-icons-round">volume_off</span>';
         } else {
             vid.volume = lastVolume || 1;
             volumeBar.value = vid.volume;
-            muteBtn.textContent = vid.volume < 0.5 ? '🔉' : '🔊';
+            muteBtn.innerHTML = vid.volume < 0.5 ? '<span class="material-icons-round">volume_down</span>' : '<span class="material-icons-round">volume_up</span>';
         }
     };
     // Next Video
+    nextVideoBtn.innerHTML = '<span class="material-icons-round">skip_next</span>';
     nextVideoBtn.onclick = () => {
         let nextIdx = (idx + 1) % videos.length;
         history.pushState({video: nextIdx}, '', '?v=' + nextIdx);
         showVideoByIndex(nextIdx);
     };
     // Settings
+    settingsBtn.innerHTML = '<span class="material-icons-round">settings</span>';
     settingsBtn.onclick = (e) => {
         e.stopPropagation();
         settingsMenu.style.display = settingsMenu.style.display === 'none' ? 'block' : 'none';
@@ -216,12 +279,26 @@ function showVideoByIndex(idx) {
         }
     });
     // Fullscreen
+    fullscreenBtn.innerHTML = '<span class="material-icons-round">fullscreen</span>';
     fullscreenBtn.onclick = () => {
         const container = vid.parentElement;
-        if (container.requestFullscreen) container.requestFullscreen();
-        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
-        else if (container.msRequestFullscreen) container.msRequestFullscreen();
+        if (!document.fullscreenElement) {
+            if (container.requestFullscreen) container.requestFullscreen();
+            else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
+            else if (container.msRequestFullscreen) container.msRequestFullscreen();
+            fullscreenBtn.innerHTML = '<span class="material-icons-round">fullscreen_exit</span>';
+        } else {
+            if (document.exitFullscreen) document.exitFullscreen();
+            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+            else if (document.msExitFullscreen) document.msExitFullscreen();
+            fullscreenBtn.innerHTML = '<span class="material-icons-round">fullscreen</span>';
+        }
     };
+    document.addEventListener('fullscreenchange', () => {
+        fullscreenBtn.innerHTML = document.fullscreenElement 
+            ? '<span class="material-icons-round">fullscreen_exit</span>' 
+            : '<span class="material-icons-round">fullscreen</span>';
+    });
     // Overlay Controls: Mousemove/Touch
     const container = vid.parentElement;
     container.addEventListener('mousemove', showControls);
@@ -250,6 +327,32 @@ function getVideoIndexFromURL() {
     return v !== null ? parseInt(v, 10) : null;
 }
 
+function renderSearchSuggestions(results) {
+    const suggestionsContainer = document.getElementById('searchSuggestions');
+    suggestionsContainer.innerHTML = '';
+    if (results.length === 0) {
+        suggestionsContainer.style.display = 'none';
+        return;
+    }
+    suggestionsContainer.style.display = 'block';
+    results.forEach((video, idx) => {
+        const suggestion = document.createElement('div');
+        suggestion.className = 'search-suggestion';
+        suggestion.innerHTML = `
+            <img src="${video.thumb}" alt="Thumbnail" class="suggestion-thumb">
+            <div class="suggestion-info">
+                <div class="suggestion-title">${video.title}</div>
+                <div class="suggestion-meta">${video.author} • ${video.views}</div>
+            </div>
+        `;
+        suggestion.onclick = () => {
+            history.pushState({ video: idx }, '', '?v=' + idx);
+            showVideoByIndex(idx);
+        };
+        suggestionsContainer.appendChild(suggestion);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const idx = getVideoIndexFromURL();
     if (idx !== null && !isNaN(idx)) {
@@ -258,55 +361,50 @@ document.addEventListener('DOMContentLoaded', () => {
         renderVideos(videos);
     }
     const searchInput = document.getElementById('search');
-    let lastResults = [];
+    const suggestionsContainer = document.createElement('div');
+    suggestionsContainer.id = 'searchSuggestions';
+    suggestionsContainer.style.display = 'none';
+    suggestionsContainer.style.position = 'absolute';
+    suggestionsContainer.style.background = '#232323';
+    suggestionsContainer.style.borderRadius = '8px';
+    suggestionsContainer.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+    suggestionsContainer.style.padding = '12px';
+    suggestionsContainer.style.width = '100%';
+    suggestionsContainer.style.maxWidth = '600px';
+    suggestionsContainer.style.zIndex = '10';
+    searchInput.parentElement.appendChild(suggestionsContainer);
+
     searchInput.addEventListener('input', e => {
         const q = e.target.value.toLowerCase();
-        lastResults = videos.filter(v => v.title.toLowerCase().includes(q));
-        renderVideos(lastResults);
+        const results = videos.filter(v => 
+            v.title.toLowerCase().includes(q) || v.author.toLowerCase().includes(q)
+        );
+        renderSearchSuggestions(results);
     });
+
     searchInput.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-            const q = searchInput.value.toLowerCase();
-            lastResults = videos.filter(v => v.title.toLowerCase().includes(q));
-            showSearchResultsList(lastResults);
+            const q = searchInput.value.trim().toLowerCase();
+            const results = videos.filter(v => 
+                v.title.toLowerCase().includes(q) || v.author.toLowerCase().includes(q)
+            );
+            const queryDisplay = document.getElementById('search-query-display');
+            queryDisplay.style.display = 'block';
+            queryDisplay.textContent = `Suchergebnisse für "${searchInput.value.trim()}"`;
+            renderVideos(results);
+            if (results.length === 0) {
+                const grid = document.getElementById('video-grid');
+                grid.innerHTML = '<div style="color:#fff;font-size:1.2rem;padding:32px;">Keine Videos gefunden.</div>';
+            }
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+            suggestionsContainer.style.display = 'none';
         }
     });
 });
-
-function showSearchResultsList(results) {
-    const grid = document.getElementById('video-grid');
-    if (results.length === 0) {
-        grid.innerHTML = '<div style="color:#fff;font-size:1.2rem;padding:32px;">Keine Videos gefunden.</div>';
-        return;
-    }
-    const list = document.createElement('ul');
-    list.style.listStyle = 'none';
-    list.style.padding = '32px';
-    list.style.margin = '0';
-    list.style.maxWidth = '600px';
-    list.style.background = '#232323';
-    list.style.borderRadius = '16px';
-    list.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
-    list.style.marginLeft = 'auto';
-    list.style.marginRight = 'auto';
-    results.forEach((video, idx) => {
-        const li = document.createElement('li');
-        li.style.display = 'flex';
-        li.style.alignItems = 'center';
-        li.style.gap = '18px';
-        li.style.padding = '18px 0';
-        li.style.borderBottom = '1px solid #333';
-        li.style.cursor = 'pointer';
-        li.innerHTML = `<img src="${video.thumb}" alt="" style="width:80px;height:45px;object-fit:cover;border-radius:8px;"> <span style="font-size:1.1rem;color:#fff;">${video.title}</span>`;
-        li.onclick = () => {
-            history.pushState({video: idx}, '', '?v=' + videos.indexOf(video));
-            showVideoByIndex(videos.indexOf(video));
-        };
-        list.appendChild(li);
-    });
-    grid.innerHTML = '';
-    grid.appendChild(list);
-}
 
 window.addEventListener('popstate', () => {
     const idx = getVideoIndexFromURL();

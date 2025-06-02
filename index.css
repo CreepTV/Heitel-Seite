@@ -20,10 +20,15 @@ header {
     font-size: 1.5rem;
     font-weight: bold;
 }
+.logo .logotitle {
+    color: #e59719; /* Set text color */
+    text-decoration: none; /* Remove underline */
+    cursor: default; /* Prevent pointer cursor */
+}
 .logo img {
     height: 40px;
 }
-#search {
+.search {
     flex: 1;
     margin: 0 32px;
     padding: 10px 16px;
@@ -34,9 +39,15 @@ header {
     color: #fff;
     outline: none;
     transition: background 0.2s;
+    width: 50%; /* Reduced width */
 }
 #search:focus {
     background: #424242;
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 nav a {
     color: #fff;
@@ -46,13 +57,13 @@ nav a {
     transition: color 0.2s;
 }
 nav a:hover {
-    color: #1db954;
+    color: #e59719;
 }
 #video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
-    padding: 32px;
+    padding: 30px;
 }
 .video-card {
     background: #222;
@@ -110,14 +121,15 @@ footer {
     padding: 24px 16px 12px 16px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
     gap: 8px;
-    
     border-radius: 0 0 12px 12px;
     opacity: 1;
     transition: opacity 0.4s;
     pointer-events: auto;
     z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
 }
 .video-player-container video {
     display: block;
@@ -133,35 +145,61 @@ footer {
     cursor: pointer;
     padding: 0 8px;
     transition: color 0.2s;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
 }
 .control-btn:hover {
-    color: #1db954;
+    color: #e59719;
+}
+.control-btn .material-icons-round {
+    font-size: 2rem;
+    color: #fff;
+    transition: color 0.2s;
+    vertical-align: middle; /* Align timestamps with other elements */
+    display: inline-flex; /* Ensure proper alignment */
+    align-items: center; /* Align icons vertically */
+    justify-content: center; /* Align icons horizontally */
+    margin: 0; /* Remove unnecessary spacing */     
+    
+}
+.control-btn:hover .material-icons-round {
+    color: #ee980d;
 }
 .seekbar-row {
     display: flex;
-    align-items: center;
+    align-items: center; /* Center seekbar vertically */
+    justify-content: center; /* Center seekbar horizontally */
     width: 100%;
     margin-bottom: 6px;
     z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
 }
 .controls-row {
     display: flex;
-    align-items: center;
+    align-items: center; /* Align controls vertically */
+    justify-content: center; /* Align controls horizontally */
     gap: 16px;
     width: 100%;
+    margin: 0; /* Remove unnecessary spacing */
 }
+.controls-right {
+    margin-left: auto; /* Align buttons to the right */
+    display: flex;
+    gap: 16px;
+    align
+}
+
 #seekBar {
-    accent-color: #1db954;
-    height: 6px;
+    accent-color: #e59719;
+    height: 7px;
     background: #444;
-    border-radius: 2px;
+    border-radius: 0px;
     width: 100%;
     margin: 0;
     box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     z-index: 2;
 }
 #volumeBar {
-    accent-color: #1db954;
+    accent-color: #ffffff;
 }
 #settingsMenu {
     display: none;
@@ -184,6 +222,232 @@ footer {
     padding: 4px;
     border: none;
     margin-top: 4px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+ul li:hover {
+    transform: translateY(-4px);
+    transition: transform 0.2s;
+}
+ul li img {
+    width: 80px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+ul li div {
+    color: #fff;
+}
+ul li div div:first-child {
+    font-size: 1rem;
+    font-weight: bold;
+}
+ul li div div:last-child {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+.author-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.recommended-video {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s;
+}
+.recommended-video:hover {
+    background: #333;
+    transform: translateY(-4px);
+}
+.recommended-thumb {
+    width: 120px; /* Increased thumbnail size */
+    height: 67px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.recommended-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.recommended-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 3px;
+}
+.recommended-meta {
+    font-size: 0.9rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.recommended-extra {
+    font-size: 0.85rem;
+    color: #888;
+}
+.video-page {
+    display: flex;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 32px auto;
+    width: 100%;
+    
+}
+.video-player-section {
+    flex: 3;
+    background: #222;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    padding: 24px;
+}
+.video-element {
+    
+    width: 100%;
+    border-radius: 12px;
+    background: #000;
+    display: block;
+}
+.settings-menu {
+    display: none;
+    position: absolute;
+    right: 24px;
+    bottom: 60px;
+    background: #232323;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    padding: 18px 24px;
+    z-index: 10;
+    color: #fff;
+    min-width: 180px;
+}
+.settings-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.settings-item label {
+    font-size: 1rem;
+}
+.playback-rate-select {
+    margin-top: 4px;
+    width: 100%;
+    background: #181818;
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px;
+    border: none;
+}
+.video-description {
+    margin-top: 18px;
+}
+.back-btn {
+    margin-top: 24px;
+    padding: 10px 24px;
+    border-radius: 24px;
+    background: #1db954;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.recommended-section {
+    min-width: 30%;
+    flex: 1;
+    background: #222;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    padding: 12px;
+}
+.recommended-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.time-display  {
+    font-size: 1rem;
+    color: #fff;
+    display: inline-flex;
+    align-items: center; /* Align timestamps vertically */
+    justify-content: center; /* Align timestamps horizontally */
+    margin: 0; /* Remove unnecessary spacing */
+    vertical-align: middle; /* Align timestamps with other elements */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
+}
+.time-separator {
+    font-size: 1rem;
+    color: #fff;
+    display: inline-flex;
+    align-items: center; /* Align timestamps vertically */
+    justify-content: center; /* Align timestamps horizontally */
+    margin: 0; /* Remove unnecessary spacing */
+    vertical-align: middle; /* Align timestamps with other elements */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
+}
+.volume-bar {
+    display: inline-flex;
+    align-items: center; /* Align volume bar vertically */
+    justify-content: center; /* Align volume bar horizontally */
+    width: auto;
+    height: 6px;
+    background: #444;
+    border-radius: 2px;
+    accent-color: #e59719;
+    margin: 0; /* Remove unnecessary spacing */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow filter */
+}
+.search-suggestion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 8px;
+}
+.search-suggestion:hover {
+    background: #333;
+}
+.suggestion-thumb {
+    width: 60px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.suggestion-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.suggestion-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+}
+.suggestion-meta {
+    font-size: 0.85rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 @media (max-width: 700px) {
     header {

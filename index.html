@@ -7,20 +7,24 @@
     <title>HeitelTube</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="img/HeitelKopf_trans.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
+        <a href="/" class="logo">
             <img src="img/HeitelKopf_trans.png" alt="Logo">
-            <span>HeitelTube</span>
+            <span class="logotitle">HeitelTube</span>
+        </a>
+        <div style="position: relative; width: 100%;">
+            <input type="text" id="search" class="search" placeholder="Suchen...">
         </div>
-        <input type="text" id="search" placeholder="Suchen...">
         <nav>
             <a href="/index.html">Startseite</a>
             <a href="/trends.html">Trends</a>
             <a href="#">Abos</a>
         </nav>
     </header>
+    <div id="search-query-display" style="text-align: center; font-size: 1.2rem; color: #fff; margin-top: 16px; display: none;"></div>
     <main id="video-grid">
         <!-- Videos werden hier per JS geladen -->
     </main>
