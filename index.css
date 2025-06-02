@@ -23,16 +23,6 @@ header {
 .logo img {
     height: 40px;
 }
-
-.material-symbols-rounded {
-    font-variation-settings:
-        'FILL' 1,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 50; /* Slightly larger size */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* Add light shadow */
-}
-
 #search {
     flex: 1;
     margin: 0 32px;
@@ -75,17 +65,14 @@ nav a:hover {
     flex-direction: column;
 }
 .video-card:hover {
-    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 }
 .video-thumb {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
     background: #333;
-    border: none;
-    display: block;
-    border-radius: 8px;
-    pointer-events: none;
 }
 .video-info {
     padding: 16px;
@@ -109,6 +96,95 @@ footer {
     margin-top: 48px;
     border-top: 1px solid #333;
 }
+/* Custom Video Controls Overlay */
+.video-player-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+.video-controls-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px 16px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    
+    border-radius: 0 0 12px 12px;
+    opacity: 1;
+    transition: opacity 0.4s;
+    pointer-events: auto;
+    z-index: 2;
+}
+.video-player-container video {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    background: #000;
+}
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.2s;
+}
+.control-btn:hover {
+    color: #1db954;
+}
+.seekbar-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 6px;
+    z-index: 2;
+}
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+#seekBar {
+    accent-color: #1db954;
+    height: 6px;
+    background: #444;
+    border-radius: 2px;
+    width: 100%;
+    margin: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+#volumeBar {
+    accent-color: #1db954;
+}
+#settingsMenu {
+    display: none;
+    position: absolute;
+    right: 24px;
+    bottom: 60px;
+    background: #232323;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    padding: 18px 24px;
+    z-index: 10;
+    color: #fff;
+    min-width: 180px;
+    font-size: 1rem;
+}
+#settingsMenu select {
+    background: #181818;
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px;
+    border: none;
+    margin-top: 4px;
+}
 @media (max-width: 700px) {
     header {
         flex-direction: column;
@@ -123,306 +199,28 @@ footer {
         padding: 12px;
         gap: 16px;
     }
-}
-
-/* Video player page layout */
-#video-player-page {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    padding: 32px;
-}
-
-#video-player {
-    flex: 2;
-    background: #222;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    padding: 16px;
-}
-
-#video-player video {
-    width: 100%;
-    border-radius: 12px;
-}
-
-#video-details {
-    margin-top: 16px;
-    color: #fff;
-}
-
-#video-details h1 {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-}
-
-#video-details .meta {
-    font-size: 0.9rem;
-    color: #aaa;
-    margin-bottom: 16px;
-}
-
-#video-details .description {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #ccc;
-}
-
-#recommended-videos {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.recommended-video-card {
-    display: flex;
-    gap: 12px;
-    background: #222;
-    border-radius: 12px;
-    padding: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.recommended-video-card:hover {
-    background: #2a2a2a;
-}
-
-.recommended-video-thumb {
-    width: 168px;
-    height: 94px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.recommended-video-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: #fff;
-}
-
-.recommended-video-title {
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 1.2;
-}
-
-.recommended-video-meta {
-    font-size: 0.85rem;
-    color: #aaa;
-}
-
-/* Updated YouTube-like custom video player styles */
-.custom-video-player {
-    position: relative;
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #000;
-}
-
-.custom-video-player video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.video-progress-container {
-    position: absolute;
-    bottom: 48px; /* Position the progress bar above the controls */
-    left: 10px; /* Add 10px margin on the left */
-    right: 10px; /* Add 10px margin on the right */
-    height: 4px;
-    background: rgba(255, 255, 255, 0.511); /* Light transparent white background for the unloaded portion */
-    cursor: pointer;
-    border-radius: 10px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s;
-    margin-bottom: 5px;
-}
-
-.custom-video-player:hover .video-progress-container {
-    opacity: 1; /* Show progress bar when controls are visible */
-}
-
-.video-progress-bar {
-    height: 100%;
-    background: #ff0000; /* YouTube red progress bar */
-    width: 0;
-    transition: width 0.4s ease-in-out; /* Smoother and slightly longer transition */
-}
-
-.video-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 16px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    background: transparent; /* Remove background */
-}
-
-.custom-video-player:hover .video-controls {
-    opacity: 1;
-}
-
-.video-controls .left-controls,
-.video-controls .right-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.video-controls button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.8rem; /* Slightly larger for modern icons */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s;
-}
-
-.video-controls button:hover {
-    color: #ed8b00; /* YouTube red hover effect */
-}
-
-.time-display {
-    font-size: 0.9rem;
-    color: #fff;
-    white-space: nowrap;
-}
-
-#play-pause-btn {
-    font-size: 50px; /* Increase size of the play button */
-}
-
-#play-pause-btn .material-symbols-rounded {
-    font-size: 40px; /* Ensure the icon inside the button is also larger */
-}
-
-/* Custom volume slider styles */
-.volume-slider-container {
-    position: relative;
-    width: 100px;
-    height: 4px;
-    background: #444;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-#volume-slider {
-    appearance: none;
-    width: 100%;
-    height: 4px;
-    background: transparent;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-#volume-slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    background: #ed8b00; /* YouTube red */
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#volume-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
-
-#volume-slider::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    background: #ed8b00;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#volume-slider::-moz-range-thumb:hover {
-    transform: scale(1.2);
-}
-
-#volume-slider::-ms-thumb {
-    width: 12px;
-    height: 12px;
-    background: #ed8b00;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#volume-slider::-ms-thumb:hover {
-    transform: scale(1.2);
-}
-
-.video-progress-thumb {
-    position: absolute;
-    bottom: -4px; /* Align slightly below the progress bar */
-    width: 12px;
-    height: 12px;
-    background: #ed8b00; /* YouTube red */
-    border-radius: 50%;
-    transform: translateX(-50%); /* Center the thumb horizontally */
-    pointer-events: auto; /* Allow interaction for dragging */
-    cursor: grab; /* Show grab cursor for better UX */
-    transition: left 0.4s ease-in-out; /* Match the progress bar's smooth transition */
-}
-
-.video-progress-thumb:active {
-    cursor: grabbing; /* Change cursor to grabbing while dragging */
-}
-
-.custom-video-player:hover .video-progress-thumb {
-    display: block; /* Show thumb when hovering over the video player */
-}
-
-/* Settings menu styles */
-#settings-menu {
-    position: absolute;
-    bottom: 60px;
-    right: 16px;
-    background: #222;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    padding: 8px 0;
-    z-index: 1000;
-    color: #fff;
-    font-size: 0.9rem;
-    width: 120px;
-}
-
-#settings-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#settings-menu li {
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-#settings-menu li:hover {
-    background: #333;
+    .video-controls-overlay {
+        padding: 8px 2px 4px 2px;
+        gap: 4px;
+    }
+    .seekbar-row {
+        margin-bottom: 2px;
+    }
+    .controls-row {
+        gap: 8px;
+    }
+    .control-btn {
+        font-size: 1.3rem;
+    }
+    #seekBar {
+        min-width: 60px;
+        height: 4px;
+    }
+    #settingsMenu {
+        right: 4px;
+        bottom: 44px;
+        min-width: 120px;
+        padding: 10px 8px;
+        font-size: 0.95rem;
+    }
 }
